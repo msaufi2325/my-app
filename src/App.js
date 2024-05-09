@@ -11,6 +11,8 @@ function HelloWorld(props) {
 
   // refs
   const firstNameRef = useRef();
+  const lastNameRef = useRef(null);
+  const dobRef = useRef(null);
 
   const toggleTrue = () => {
     setIsTrue(!isTrue);
@@ -49,6 +51,8 @@ function HelloWorld(props) {
       setDob("");
 
       firstNameRef.current.value = "";
+      lastNameRef.current.value = "";
+      dobRef.current.value = "";
     }
   };
 
@@ -112,6 +116,7 @@ function HelloWorld(props) {
         <Input
           title="Last Name"
           type="text"
+          ref={lastNameRef}
           name="last-name"
           autoComplete="last-name-new"
           className="form-control"
@@ -121,6 +126,7 @@ function HelloWorld(props) {
         <Input
           title="Date of Birth"
           type="date"
+          ref={dobRef}
           name="dob"
           autoComplete="dob-new"
           className="form-control"
