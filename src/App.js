@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./HelloWorld.css";
+import "./App.css";
 
 function HelloWorld(props) {
   const [isTrue, setIsTrue] = useState(true);
@@ -20,11 +20,11 @@ function HelloWorld(props) {
         </Fragment>
       )}
       <hr />
-      <hr />
       {isTrue ? <p>Is true</p> : <p>Is false</p>}
       <a href="#!" className="btn btn-outline-secondary" onClick={toggleTrue}>
         Toggle isTrue
       </a>
+      <hr />
     </Fragment>
   );
 }
