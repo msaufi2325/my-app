@@ -36,7 +36,39 @@ function HelloWorld(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(firstName, lastName, dob);
+    if (firstName === "" || lastName === "" || dob === "") {
+      alert("Please fill in all fields");
+      return;
+    } else {
+      addPerson(firstName, lastName, dob);
+      setFirstName("");
+      setLastName("");
+      setDob("");
+    }
+  };
+
+  const addPerson = (newFirstName, newLastName, newDob) => {
+    // create the object
+    let newPerson = {
+      id: crowd.length + 1,
+      firstName: newFirstName,
+      lastName: newLastName,
+      dob: newDob,
+    };
+
+    const newList = [...crowd, newPerson];
+
+    const sorted = newList.sort((a, b) => {
+      if (a.lastName < b.lastName) {
+        return -1;
+      } else if (a.lastName > b.lastName) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    setCrowd(sorted);
   };
 
   return (
