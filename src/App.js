@@ -33,6 +33,12 @@ function HelloWorld(props) {
     setCrowd(people);
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(firstName, lastName, dob);
+  };
+
   return (
     <Fragment>
       <hr />
@@ -50,7 +56,7 @@ function HelloWorld(props) {
         Toggle isTrue
       </a>
       <hr />
-      <form autoComplete="off">
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label" htmlFor="first-name">
             First Name
@@ -82,6 +88,8 @@ function HelloWorld(props) {
           className="form-control"
           onChange={(e) => setDob(e.target.value)}
         ></Input>
+
+        <input type="submit" value="Submit" className="btn btn-primary"></input>
       </form>
       <div>
         First Name: {firstName} <br />
