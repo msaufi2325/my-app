@@ -73,6 +73,15 @@ function HelloWorld(props) {
           className="form-control"
           onChange={(e) => setLastName(e.target.value)}
         ></Input>
+
+        <Input
+          title="Date of Birth"
+          type="date"
+          name="dob"
+          autoComplete="dob-new"
+          className="form-control"
+          onChange={(e) => setDob(e.target.value)}
+        ></Input>
       </form>
       <div>
         First Name: {firstName} <br />
