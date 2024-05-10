@@ -4,8 +4,14 @@ import "./AppClass.css";
 export default class AppClass extends Component {
   constructor(props) {
     super(props);
+
+    this.lastNameRef = React.createRef(null);
+    this.firstNameRef = React.createRef();
+    this.dobRef = React.createRef(null);
+
     this.state = {
       isTrue: false,
+      crowd: [],
     };
   }
 
