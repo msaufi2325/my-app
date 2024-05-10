@@ -16,6 +16,53 @@ export default class AppClass extends Component {
     };
   }
 
+  setFirstName = (newName) => {
+    this.setState({ firstName: newName });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      this.state.firstName === "" ||
+      this.state.lastName === "" ||
+      this.state.dob === ""
+    ) {
+      alert("Please fill in all fields");
+      return;
+    } else {
+      this.addPerson(this.state.firstName, this.state.lastName, this.state.dob);
+      this.setState({ firstName: "", lastName: "", dob: "" });
+
+      this.firstNameRef.current.value = "";
+      this.lastNameRef.current.value = "";
+      this.dobRef.current.value = "";
+    }
+  };
+
+  addPerson = (newFirstName, newLastName, newDob) => {
+    let newPerson = {
+      id: this.state.crowd.length + 1,
+      firstName: newFirstName,
+      lastName: newLastName,
+      dob: newDob,
+    };
+
+    const newList = [...this.state.crowd, newPerson];
+
+    const sorted = newList.sort((a, b) => {
+      if (a.lastName < b.lastName) {
+        return -1;
+      } else if (a.lastName > b.lastName) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    this.setState({ crowd: sorted });
+  };
+
   componentDidMount() {
     this.setState({
       firstName: "",
@@ -54,8 +101,6 @@ export default class AppClass extends Component {
             <hr />
           </Fragment>
         )}
-        <hr />
-        <hr />
         {this.state.isTrue ? <p>Is true</p> : <p>Is false</p>}
         <a
           href="#!"
